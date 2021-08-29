@@ -1,0 +1,30 @@
+CRITICAL - 2021-08-27 22:11:27 --> Class 'MasterApar\Libraries\ScheduleModel' not found
+#0 /home/ubuntu/apar/web/codeigniter4-modular/app/Modules/MasterApar/Controllers/MasterApar.php(108): MasterApar\Libraries\MasterAparLib->storedata()
+#1 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(928): MasterApar\Controllers\MasterApar->edit()
+#2 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(436): CodeIgniter\CodeIgniter->runController()
+#3 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest()
+#4 /home/ubuntu/apar/web/codeigniter4-modular/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/ubuntu/ap...')
+#6 {main}
+CRITICAL - 2021-08-27 22:11:52 --> Class 'MasterApar\Libraries\ScheduleModel' not found
+#0 /home/ubuntu/apar/web/codeigniter4-modular/app/Modules/MasterApar/Controllers/MasterApar.php(108): MasterApar\Libraries\MasterAparLib->storedata()
+#1 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(928): MasterApar\Controllers\MasterApar->edit()
+#2 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(436): CodeIgniter\CodeIgniter->runController()
+#3 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest()
+#4 /home/ubuntu/apar/web/codeigniter4-modular/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/ubuntu/ap...')
+#6 {main}
+CRITICAL - 2021-08-27 22:18:07 --> Table 'dataweb.apar' doesn't exist
+#0 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(329): mysqli->query()
+#1 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Database/BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Database/BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1981): CodeIgniter\Database\BaseConnection->query()
+#4 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Model.php(561): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/BaseModel.php(1147): CodeIgniter\Model->countAllResults()
+#6 /home/ubuntu/apar/web/codeigniter4-modular/app/Modules/MasterApar/Controllers/MasterApar.php(41): CodeIgniter\BaseModel->paginate()
+#7 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(928): MasterApar\Controllers\MasterApar->index()
+#8 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(436): CodeIgniter\CodeIgniter->runController()
+#9 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/ubuntu/apar/web/codeigniter4-modular/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#11 /home/ubuntu/apar/web/codeigniter4-modular/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/ubuntu/ap...')
+#12 {main}
