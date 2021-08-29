@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class MasterApar extends Migration
+class DbApar extends Migration
 {
 	public function up()
 	{

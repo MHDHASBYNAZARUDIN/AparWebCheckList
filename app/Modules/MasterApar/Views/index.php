@@ -46,8 +46,8 @@
                             $rows .='<tr>';
                             $rows .= '<th>'.$v['id_apar'].'</th>';
                             $rows .= '<td>'.$v['lokasi'].'</td>';
-                            $rows .= '<td>'.$v['masa_berlaku_awal'].'</td>';
-                            $rows .= '<td>'.$v['masa_berlaku_akhir'].'</td>';
+                            $rows .= '<td>'.date('d M Y',strtotime($v['masa_berlaku_awal'])).'</td>';
+                            $rows .= '<td>'.date('d M Y',strtotime($v['masa_berlaku_akhir'])).'</td>';
                             $rows .= '<td>'.$v['foto'].'</td>';
                             $rows .= '<td>'.$v['Deskripsi'].'</td>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['created_at'])).'</td>';

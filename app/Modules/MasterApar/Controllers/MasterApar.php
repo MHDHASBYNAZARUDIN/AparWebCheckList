@@ -46,6 +46,7 @@ class MasterApar extends Controller
         $data['page']       = $page;
         $data['pager']      = $agent->pager;
 
+        $data['data'] = $records;
                 
         helper(['form']);
         
@@ -72,7 +73,7 @@ class MasterApar extends Controller
             $data['mode']    = 'add';           
             return view('MasterApar\Views\AddFormApar', $data);
         }
-        $database = \Config\Database::connect();
+        /*$database = \Config\Database::connect();
         $db = $database->table('apar');
     
         $input = $this->validate([
@@ -82,12 +83,13 @@ class MasterApar extends Controller
                 'max_size[file,1024]',
             ]
         ]);
+        $destination    = ROOTPATH.'public/images/';
     
         if (!$input) {
             print_r('Choose a valid file');
         } else {
             $img = $this->request->getFile('file');
-            $img->move(WRITEPATH . 'uploads');
+            $img->move($destination . 'uploads');
     
             $data = [
                'lokasi' =>  $img->getName(),
@@ -96,7 +98,7 @@ class MasterApar extends Controller
     
             $save = $db->insert($data);
             print_r('File has successfully uploaded');        
-        }
+        }*/
     }
     public function edit($id_apar=''){
         $data  = [];

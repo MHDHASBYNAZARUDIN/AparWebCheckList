@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/assets/css/style.css">
         <script type="text/javascript" src="/assets/js/jquery/jquery-3.5.1.js"></script>
         <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery/datepicker.js"></script>
     </head>
     <body>
         <?php 

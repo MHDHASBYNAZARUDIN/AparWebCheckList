@@ -13,7 +13,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <form method="post" action="<?=base_url().'/masterapar/'.$mode;?>">
+            <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="lokasi">Lokasi</label>
                     <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="lokasi" value="<?=isset($rec['lokasi'])?$rec['lokasi']:''; ?>">
@@ -35,8 +35,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Avatar</label>
-                    <input type="file" name="foto" class="form-control">
+                        <label for="photo">Foto</label>
+                    <div class="custom-file">
+                        <input name="foto" id="foto" type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                 </div>
 
                 <div class="form-group">
