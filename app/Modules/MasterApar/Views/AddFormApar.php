@@ -15,34 +15,38 @@
             <?php endif; ?>
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
+                <div class="shadow p-3 mb-5 bg-light rounded">
                     <label for="lokasi">Lokasi</label>
                     <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="lokasi" value="<?=isset($rec['lokasi'])?$rec['lokasi']:''; ?>">
-                </div>
-                
-                <div class="form-group">
+            <!-- ******************************************************************************** -->
                     <label for="lokasi">Jenis Apar</label>
                     <input type="text" class="form-control" id="jenis" name="jenis" placeholder="jenis apar" value="<?=isset($rec['jenis'])?$rec['jenis']:''; ?>">
-                </div>
-
-                <div class="form-group">
+            <!-- ******************************************************************************** -->
+            <!--
+                <label for="lokasi">Jenis Apar</label>
+                <select class="custom-select">
+                <//?php foreach ($records as $item => $k) : ?>
+                <option value="<//? $k['jenis'];?>"></option>
+                <//?php endforeach; ?>
+            </select>
+                -->
+                <div class="form-row">
+                <div class="col">
                     <label for="masa_berlaku_awal">Masa Berlaku Awal</label>
-                    <input type="text" class="form-control" id="masa_berlaku_awal" name="masa_berlaku_awal" placeholder="Masa Berlaku Awal" value="<?=isset($rec['masa_berlaku_awal'])?$rec['masa_berlaku_awal']:''; ?>">
-                </div>
-
-                <div class="form-group">
+                    <input type="text" class="form-control" id="masa_berlaku_awal" name="masa_berlaku_awal" placeholder="Tahun/Bulan/Tanggal" value="<?=isset($rec['masa_berlaku_awal'])?$rec['masa_berlaku_awal']:''; ?>">
+                    </div>
+                <div class="col">
                     <label for="masa_berlaku_akhir">Masa Berlaku Akhir</label>
-                    <input type="text" class="form-control" id="masa_berlaku_akhir" name="masa_berlaku_akhir" placeholder="Masa Berlaku Akhir" value="<?=isset($rec['masa_berlaku_akhir'])?$rec['masa_berlaku_akhir']:''; ?>">
+                    <input type="text" class="form-control" id="masa_berlaku_akhir" name="masa_berlaku_akhir" placeholder="Tahun/Bulan/Tanggal" value="<?=isset($rec['masa_berlaku_akhir'])?$rec['masa_berlaku_akhir']:''; ?>">
+           <!-- ******************************************************************************** --> 
                 </div>
-
-                <div class="form-group">
+                </div>
                         <label for="photo">Foto</label>
                     <div class="custom-file">
                         <input name="foto" id="foto" type="file" class="custom-file-input" id="customFile">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
-                </div>
-
-                <div class="form-group">
+            <!-- ***************************************************************************************** -->             
                     <label for="Deskripsi">Deskripsi</label>
                     <textarea class="form-control" id="Deskripsi" name="Deskripsi" rows="3"><?=isset($rec['Deskripsi'])?$rec['Deskripsi']:''; ?></textarea>
                 </div>

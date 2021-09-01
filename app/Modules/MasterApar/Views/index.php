@@ -28,6 +28,7 @@
                     <tr>
                     <th scope="col">NO.</th>
                     <th scope="col">LOKASI</th>
+                    <th scope="col">JENIS</th>
                     <th scope="col">MASA BERLAKU AWAL</th>
                     <th scope="col">MASA BERLAKU AKHIR</th>
                     <th scope="col">FOTO</th>
@@ -46,9 +47,11 @@
                             $rows .='<tr>';
                             $rows .= '<th>'.$v['id_apar'].'</th>';
                             $rows .= '<td>'.$v['lokasi'].'</td>';
+                            $rows .= '<td>'.$v['jenis'].'</td>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['masa_berlaku_awal'])).'</td>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['masa_berlaku_akhir'])).'</td>';
-                            $rows .= '<td>'.$v['foto'].'</td>';
+                            $rows .= '<td><img src="'.base_url().'/image/'.$v['foto'].'" width="100">';
+                            $rows .= '</td>';
                             $rows .= '<td>'.$v['Deskripsi'].'</td>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['created_at'])).'</td>';
                             $rows .= '<td>'.session()->get('firstname').'</td>';

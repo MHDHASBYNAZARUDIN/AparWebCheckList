@@ -14,7 +14,7 @@ class MasterApar extends Controller
 
     public function __construct()
     {
-        $this->cperpage = 2;
+        $this->cperpage = 10;
         $this->MasterAparLib = new MasterAparLib();
     }
     
@@ -45,13 +45,12 @@ class MasterApar extends Controller
         $data['offset']     = $offset;
         $data['page']       = $page;
         $data['pager']      = $agent->pager;
-
-        $data['data'] = $records;
                 
         helper(['form']);
         
         
         return view('MasterApar\Views\index', $data);
+        return view('MasterApar\Views\AddFormApar', $data);
     }
     public function add(){
         $data  = [];

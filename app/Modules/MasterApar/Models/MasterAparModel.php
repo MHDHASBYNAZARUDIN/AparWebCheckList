@@ -16,7 +16,7 @@ class MasterAparModel extends Model
         parent::__construct();
     }
 
-    public function getGambar()
+    public function get()
     {
         return $this->findAll();  
     }
