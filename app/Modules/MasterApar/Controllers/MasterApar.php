@@ -39,9 +39,45 @@ class MasterApar extends Controller
         }else{
             #$records    = $agent->findAll();
             $records     = $agent->paginate($this->cperpage,'bootstrap');
-        }    
+        }   
+         
+        if(count($records) > 0){
+            foreach($records as $k => $v){
+                
+                if(isset($v['created_at'])){
+                    $path = ROOTPATH.'public/images/'.str_replace('-','/',substr($v['created_at'],0,10)).'/';
+                    if(file_exists($path.$v['id_apar'].'.png')){
+                        $photo = '/images/'.str_replace('-','/',substr($v['created_at'],0,10)).'/'.$v['id_apar'].'.png';
+                    }elseif(file_exists($path.$v['id_apar'].'.jpg')){
+                        $photo = '/images/'.str_replace('-','/',substr($v['created_at'],0,10)).'/'.$v['id_apar'].'.jpg';
+                    }elseif(file_exists($path.$v['id_apar'].'.jpeg')){
+                        $photo = '/images/'.str_replace('-','/',substr($v['created_at'],0,10)).'/'.$v['id_apar'].'.jpeg';
+                    }else{
+                        $photo = '/images/default.png'; 
+                    }
+                 }else{
+                    $photo = '/images/default.png';
+                 }
+
+                $v['foto'] = $photo.'?'.date('YmdHis'); 
+                $ret[] = $v; 
+            //echo '<pre>';
+            //echo '<br>';
+            //print_r($ret);
+            //echo '</pre>';
+            //die();
+            }
+            
+        }
+        $jenis = $this->MasterAparLib->getjenisselect();
+        $data['selec'] = $jenis; 
         $data               = [];
-        $data['records']    = $records; 
+        $data['records']    = $ret; 
+        //echo '<pre>';
+        //echo '<br>';
+        //print_r($jenis);
+        //echo '</pre>';
+        //die();
         $data['offset']     = $offset;
         $data['page']       = $page;
         $data['pager']      = $agent->pager;
@@ -52,15 +88,19 @@ class MasterApar extends Controller
         return view('MasterApar\Views\index', $data);
         return view('MasterApar\Views\AddFormApar', $data);
     }
+
     public function add(){
         $data  = [];
         helper(['form']);
         $oroles = new MasterAparModel(); 
+        //$Tjenis = new Tajenis;
         if ($this->request->getMethod() == 'post') {
             $response = $this->MasterAparLib->storedata();
             if ($response->status != \Utils\Libraries\UtilsResponseLib::$SUCCESS) {
                 //failed requirement 
                 $data = $response->error;
+                $jenis = $this->MasterAparLib->getjenisselect();
+                $data['selec'] = $jenis;    
                 $data['mode']    = 'add';                
                 return view('MasterApar\Views\AddFormApar', $data);
             } else {
@@ -68,36 +108,12 @@ class MasterApar extends Controller
                 return redirect()->to(base_url() . '/masterapar');
             }
         }else{
-            //load edit first time       
-            $data['mode']    = 'add';           
+            //load edit first time   
+            $jenis = $this->MasterAparLib->getjenisselect();
+            $data['selec'] = $jenis;    
+            $data['mode']    = 'add';
             return view('MasterApar\Views\AddFormApar', $data);
         }
-        /*$database = \Config\Database::connect();
-        $db = $database->table('apar');
-    
-        $input = $this->validate([
-            'file' => [
-                'uploaded[file]',
-                'mime_in[file,image/jpg,image/jpeg,image/png]',
-                'max_size[file,1024]',
-            ]
-        ]);
-        $destination    = ROOTPATH.'public/images/';
-    
-        if (!$input) {
-            print_r('Choose a valid file');
-        } else {
-            $img = $this->request->getFile('file');
-            $img->move($destination . 'uploads');
-    
-            $data = [
-               'lokasi' =>  $img->getName(),
-               'foto'  => $img->getClientMimeType()
-            ];
-    
-            $save = $db->insert($data);
-            print_r('File has successfully uploaded');        
-        }*/
     }
     public function edit($id_apar=''){
         $data  = [];
@@ -110,6 +126,8 @@ class MasterApar extends Controller
                 //failed requirement 
                 $record = $oroles->find($id_apar);
                 $data = $response->error;
+                $jenis = $this->MasterAparLib->getjenisselect();
+                $data['selec'] = $jenis;
                 $data['mode']    = 'edit/'.$id_apar;
                 $data['rec']     = $record;
                 
@@ -122,12 +140,31 @@ class MasterApar extends Controller
         }else{
             //load edit first time 
             $record = $oroles->find($id_apar);
-
+            $jenis = $this->MasterAparLib->getjenisselect();
+            $data['selec'] = $jenis;
             $data['mode']   = 'edit/'.$id_apar;
             $data['rec']    = $record;
 
             return view('MasterApar\Views\AddFormApar', $data);
         }
+        
+    }
+
+    public function printl($eid){
+        $data  = [];
+        helper(['form']);
+        $oroles = new MasterAparModel();
+        //mendeteksi request 
+        $role = $this->MasterAparLib->genQrcode($eid);
+                //failed requirement 
+               $record = $oroles->find($eid);
+               $data['rec'] = $record;
+                //$data = $response->error;
+              // $data['mode']    = 'printl/'.$eid;
+                $data['qrcode']     = $role;
+                
+                
+            return view('MasterApar\Views\print', $data);
         
     }
     

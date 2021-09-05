@@ -1,8 +1,10 @@
 <?php 
 namespace MasterApar\Libraries;
 use MasterApar\Models\MasterAparModel;
+use MasterApar\Models\TaJenis;
 use Utils\Libraries\UtilsResponseLib;
 use CodeIgniter\HTTP\Response;
+use app\Libraries\Ciqrcode;
 use stdClass;
 
 class MasterAparLib {
@@ -10,6 +12,7 @@ class MasterAparLib {
     public function __construct() {
         $config = config(App::class);
         $this->response = new Response($config);
+        include APPPATH . '/Libraries/Ciqrcode.php';
     }
     
     //public function storedata(){
@@ -68,7 +71,7 @@ class MasterAparLib {
         $request = \Config\Services::request();
         $rules = [
             'lokasi' => 'required|min_length[3]|max_length[20]',
-            'jenis' => 'required|min_length[3]|max_length[20]',
+            'jenis' => 'required',
             'masa_berlaku_awal' => 'required',
             'masa_berlaku_akhir' => 'required',
             'Deskripsi' => 'required|min_length[0]|max_length[255]',
@@ -158,6 +161,58 @@ class MasterAparLib {
                 }         
             }
         }    
+    }
+    /**
+     * Gen QRcode 
+     */
+    public function genQrcode($eid){
+        $ciqrcode       = new Ciqrcode(); 
+        $scheduleModel  = new MasterAparModel();
+        
+        $destination    = ROOTPATH.'public/qrcode/';
+        if(!file_exists($destination)){
+            mkdir($destination,0777);
+        }
+        $dt             = $scheduleModel->find($eid); 
+        if(isset($dt['created_at'])){
+            $created    = substr($dt['created_at'],0,10);
+            $var        = explode('-',$created);
+            if(count($var)==3){
+                if(!file_exists($destination.$var[0])){
+                    mkdir($destination.$var[0],0777);
+                }
+                if(!file_exists($destination.$var[0].'/'.$var[1])){
+                    mkdir($destination.$var[0].'/'.$var[1],0777);
+                }
+                if(!file_exists($destination.$var[0].'/'.$var[1].'/'.$var[2])){
+                    mkdir($destination.$var[0].'/'.$var[1].'/'.$var[2],0777);
+                }
+
+                $fdestination   = $destination.$var[0].'/'.$var[1].'/'.$var[2].'/';
+                $kodeqr         = $dt['id_apar'];  
+                
+                $params['data']     = $kodeqr;
+                $params['level']    = 'H';
+                $params['size']     = 10;
+                $params['savename'] = $fdestination.$kodeqr.".png";
+                /*if(file_exists($fdestination.'/'.$kodeqr.".png")){    
+                    unlink($fdestination.'/'.$kodeqr.".png");
+                }*/
+                $path = $ciqrcode->generate($params);
+                $ret  = str_replace(ROOTPATH.'public',base_url(),$path);
+                return  $ret;
+
+            }         
+        }
+
+    }
+
+    /**
+     * select role name  
+     */
+    public function getjenisselect(){
+        $jenisModel = new TaJenis();
+        return $jenisModel->select('id_jenis, jenis')->get()->getResult();
     }
 
     

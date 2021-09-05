@@ -52,7 +52,7 @@ class Db_Apar extends Migration
 	public function down()
 	{
 		//
-        //
+        //      
 		$this->forge->dropTable('apar');
 	}
 }

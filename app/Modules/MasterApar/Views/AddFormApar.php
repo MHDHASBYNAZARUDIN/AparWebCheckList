@@ -18,10 +18,10 @@
                 <div class="shadow p-3 mb-5 bg-light rounded">
                     <label for="lokasi">Lokasi</label>
                     <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="lokasi" value="<?=isset($rec['lokasi'])?$rec['lokasi']:''; ?>">
-            <!-- ******************************************************************************** -->
+            <!-- ******************************************************************************** 
                     <label for="lokasi">Jenis Apar</label>
                     <input type="text" class="form-control" id="jenis" name="jenis" placeholder="jenis apar" value="<?=isset($rec['jenis'])?$rec['jenis']:''; ?>">
-            <!-- ******************************************************************************** -->
+            -->
             <!--
                 <label for="lokasi">Jenis Apar</label>
                 <select class="custom-select">
@@ -30,6 +30,21 @@
                 <//?php endforeach; ?>
             </select>
                 -->
+                <div class="form-group">
+                                <label for="jenis">Group</label>
+                                <select class="form-control" id="jenis" name="jenis">
+                                    <option value="0" <?= isset($rec->role_id)?($rec->role_id< 1?'selected':''):'' ?>>&nbsp;</option>
+                                    <?php 
+                                        $options = ''; 
+                                        foreach($selec as $k => $v){
+                                           $selected = isset($rec['jenis'])?($rec['jenis']==$v['id_jenis']?'selected':''):''; 
+                                           $options .= '<option value="'.$v->jenis.'" '.$selected.'>'.$v->jenis.'</option>';
+                                        }
+                                        echo $options;
+                                    ?>
+                                </select>
+                            </div>
+                            
                 <div class="form-row">
                 <div class="col">
                     <label for="masa_berlaku_awal">Masa Berlaku Awal</label>
