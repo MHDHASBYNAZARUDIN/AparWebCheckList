@@ -4,8 +4,12 @@ use CodeIgniter\Model;
 
 class TransaksiAparModel extends Model 
 {
-    protected $table = 'TransaksiApar';
-    protected $allowedFields = [];
+    protected $table = 'transaksi';
+    protected $primaryKey = 'id_transaksi';
+    protected $useAutoIncrement = true;
+    protected $allowedFields = ['noperiksa','lokasi','jenis','masa_berlaku_awal','masa_berlaku_akhir',
+                                'foto','Deskripsi','kondisifisik','kondisipin','kondisitekanan',
+                                'kondisinozzle','kondisiselang'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
     
@@ -15,10 +19,12 @@ class TransaksiAparModel extends Model
     }
     
     protected function beforeInsert(array $data) {
+        $data['data']['dibuat'] = date('Y-m-d H:i:s');
         return $data;
     }
 
     protected function beforeUpdate(array $data) {
+        $data['data']['diedit'] = date('Y-m-d H:i:s');
         return $data;
     }
 }

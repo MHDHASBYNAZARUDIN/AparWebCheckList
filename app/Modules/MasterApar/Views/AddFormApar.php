@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-3">&nbsp;</div>
         <div class="col-6">
-            <h1 class="text-center">Tambah Apar</h1>
+            <h1 class="text-center">TAMBAH APAR</h1>
             <?php if (isset($validation)) : ?>
                 <div class="col-12">
                     <div class="alert alert-danger" role="alert">
@@ -16,7 +16,7 @@
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
                 <div class="shadow p-3 mb-5 bg-light rounded">
-                    <label for="lokasi">Lokasi</label>
+                    <label for="lokasi">LOKASI :</label>
                     <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="lokasi" value="<?=isset($rec['lokasi'])?$rec['lokasi']:''; ?>">
             <!-- ******************************************************************************** 
                     <label for="lokasi">Jenis Apar</label>
@@ -31,13 +31,13 @@
             </select>
                 -->
                 <div class="form-group">
-                                <label for="jenis">Group</label>
+                                <label for="jenis">JENIS APAR :</label>
                                 <select class="form-control" id="jenis" name="jenis">
-                                    <option value="0" <?= isset($rec->role_id)?($rec->role_id< 1?'selected':''):'' ?>>&nbsp;</option>
+                                    <option value="0">Jenis</option>
                                     <?php 
                                         $options = ''; 
                                         foreach($selec as $k => $v){
-                                           $selected = isset($rec['jenis'])?($rec['jenis']==$v['id_jenis']?'selected':''):''; 
+                                           $selected = isset($rec->jenis)?($rec->jenis ==$v['id_jenis']?'selected':''):''; 
                                            $options .= '<option value="'.$v->jenis.'" '.$selected.'>'.$v->jenis.'</option>';
                                         }
                                         echo $options;
@@ -47,22 +47,22 @@
                             
                 <div class="form-row">
                 <div class="col">
-                    <label for="masa_berlaku_awal">Masa Berlaku Awal</label>
+                    <label for="masa_berlaku_awal">MASA BERLAKU AWAL :</label>
                     <input type="text" class="form-control" id="masa_berlaku_awal" name="masa_berlaku_awal" placeholder="Tahun/Bulan/Tanggal" value="<?=isset($rec['masa_berlaku_awal'])?$rec['masa_berlaku_awal']:''; ?>">
-                    </div>
+                </div>
                 <div class="col">
-                    <label for="masa_berlaku_akhir">Masa Berlaku Akhir</label>
+                    <label for="masa_berlaku_akhir">Masa BERLAKU AKHIR :</label>
                     <input type="text" class="form-control" id="masa_berlaku_akhir" name="masa_berlaku_akhir" placeholder="Tahun/Bulan/Tanggal" value="<?=isset($rec['masa_berlaku_akhir'])?$rec['masa_berlaku_akhir']:''; ?>">
            <!-- ******************************************************************************** --> 
                 </div>
                 </div>
-                        <label for="photo">Foto</label>
+                        <label for="photo">FOTO :</label>
                     <div class="custom-file">
                         <input name="foto" id="foto" type="file" class="custom-file-input" id="customFile">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
             <!-- ***************************************************************************************** -->             
-                    <label for="Deskripsi">Deskripsi</label>
+                    <label for="Deskripsi">DESKRIPSI :</label>
                     <textarea class="form-control" id="Deskripsi" name="Deskripsi" rows="3"><?=isset($rec['Deskripsi'])?$rec['Deskripsi']:''; ?></textarea>
                 </div>
                 <input type="hidden" name="id_apar" id="id_apar" value="<?=isset($rec['id_apar'])?$rec['id_apar']:''; ?>">

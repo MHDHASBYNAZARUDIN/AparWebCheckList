@@ -1,7 +1,7 @@
 <?php
 namespace App\Database\Migrations;
 
-class AddUsers extends \CodeIgniter\Database\Migration {
+class AddUserss extends \CodeIgniter\Database\Migration {
 
     public function up() {
         $this->forge->addField([

@@ -28,18 +28,23 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <a class="navbar-brand" href="<?=base_url()?>/transaksiapar">
+                    <i class="fas fa-clipboard-check"></i>
+                    CEK</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <?php if (session()->get('isLoggedIn')) : ?>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Menu
+                            <i class="fas fa-bars"></i> DATA
                         </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<?=base_url()?>/masterapar">Apar</a>
-                        <a class="dropdown-item" href="<?=base_url()?>/masterjenisapar">Jenis Apar</a>
-                        <a class="dropdown-item" href="<?=base_url()?>/transaksiapar">Transaksi Apar</a>
+                        <a class="dropdown-item" href="<?=base_url()?>/#">Data Cek Apar</a>
+                        <a class="dropdown-item" href="<?=base_url()?>/masterapar">Data Apar</a>
+                        <a class="dropdown-item" href="<?=base_url()?>/masterjenisapar">Data Jenis Apar</a>
+                        
                 </div>
                     </li>
                 </ul>

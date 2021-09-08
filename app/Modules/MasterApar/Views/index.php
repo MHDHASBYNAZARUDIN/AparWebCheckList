@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">Daftar Apar</h1>
-    </div>
+        </div>
         </div>
     <div class="row">
         <div class="col-12">
@@ -13,13 +13,13 @@
             <form method="post" action="">
                 <div class="form-row align-items-center float-sm-right">
                     <a href="<?=base_url().'/masterapar';?>" class="btn btn-warning b-align-link">Reset</a>&nbsp;
-                    <a href="<?=base_url().'/masterapar/add';?>" class="btn btn-danger b-align-link">Add</a>
+                    <a href="<?=base_url().'/masterapar/add';?>" class="btn btn-danger b-align-link"><i class="fas fa-plus-circle"></i></a>
                     
                     <div class="col-auto">
                         <label class="sr-only" for="inlineFormInput">Lokasi</label>
                         <input type="text" class="form-control mb-2" id="lokasi" name="lokasi" placeholder="Lokasi">
                     </div>
-                    <button type="submit" class="btn btn-info mb-2">Find</button>
+                    <button type="submit" class="btn btn-info mb-2"><i class="fas fa-search"></i></button>
                 </div>
             </form>
             <!--end of form navigation-->
@@ -59,8 +59,8 @@
                             $rows .= '<td>'.session()->get('firstname').'</td>';
                             $rows .= '<td>';
                             $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
-                            $rows .= '<a href="'.base_url().'/masterapar/edit/'.$v['id_apar'].'" class="btn btn-success">EDIT</a>';
-                            $rows .= '<a href="'.base_url().'/masterapar/printl/'.$v['id_apar'].'" class="btn btn-primary">PRINT</a>';
+                            $rows .= '<a href="'.base_url().'/masterapar/edit/'.$v['id_apar'].'" class="btn btn-success"><i class="fas fa-edit"></i></a>';
+                            $rows .= '<a href="'.base_url().'/masterapar/printl/'.$v['id_apar'].'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
                             $rows .= '</div>';
                             $rows .= '</td>';
                             $rows .='</tr>';
