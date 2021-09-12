@@ -29,12 +29,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <a class="navbar-brand" href="<?=base_url()?>/transaksiapar">
-                    <i class="fas fa-clipboard-check"></i>
-                    CEK</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <?php if (session()->get('isLoggedIn')) : ?>
+                    
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

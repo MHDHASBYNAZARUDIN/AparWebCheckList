@@ -70,11 +70,12 @@ class MasterAparLib {
         #---copy code start----
         $request = \Config\Services::request();
         $rules = [
+            'noperiksa' => 'required',
             'lokasi' => 'required|min_length[3]|max_length[20]',
             'jenis' => 'required',
             'masa_berlaku_awal' => 'required',
             'masa_berlaku_akhir' => 'required',
-            'Deskripsi' => 'required|min_length[0]|max_length[255]',
+            'Deskripsi' => 'required',
         ];
         $errors = [];
         //Sesuaikan lagi dibawah 
@@ -91,11 +92,12 @@ class MasterAparLib {
         } else {
             $scheduleModel = new MasterAparModel();
             $newData = [
+                'noperiksa'             => $request->getVar('noperiksa'),
                 'lokasi'                => $request->getVar('lokasi'),
-                'jenis'                 => $request->getVar('jenis'),
+                'jenis'              => $request->getVar('jenis'),
                 'masa_berlaku_awal'     => $request->getVar('masa_berlaku_awal'),
-                'masa_berlaku_akhir'     => $request->getVar('masa_berlaku_akhir'),
-                'Deskripsi'                => $request->getVar('Deskripsi'),
+                'masa_berlaku_akhir'    => $request->getVar('masa_berlaku_akhir'),
+                'Deskripsi'             => $request->getVar('Deskripsi'),
             ];
             $idcheck = $request->getVar('id_apar');
             if($idcheck){

@@ -27,6 +27,7 @@
                 <thead class="thead-dark">
                     <tr>
                     <th scope="col">NO.</th>
+                    <th scope="col">NO. PERIKSA</th>
                     <th scope="col">LOKASI</th>
                     <th scope="col">JENIS</th>
                     <th scope="col">MASA BERLAKU AWAL</th>
@@ -46,6 +47,7 @@
                         foreach($records as $k => $v){
                             $rows .='<tr>';
                             $rows .= '<th>'.$v['id_apar'].'</th>';
+                            $rows .= '<td>'.$v['noperiksa'].'</td>';
                             $rows .= '<td>'.$v['lokasi'].'</td>';
                             $rows .= '<td>'.$v['jenis'].'</td>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['masa_berlaku_awal'])).'</td>';
@@ -59,6 +61,8 @@
                             $rows .= '<td>'.session()->get('firstname').'</td>';
                             $rows .= '<td>';
                             $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
+                            $rows .= '<a href="'.base_url().'/transaksiapar/add'.'" class="btn btn-warning"><i class="fas fa-tasks"></i></a>';
+                            $rows .= '<a href="'.base_url().'/transaksiapar'.'" class="btn btn-dark"><i class="fas fa-info-circle"></i></a>';
                             $rows .= '<a href="'.base_url().'/masterapar/edit/'.$v['id_apar'].'" class="btn btn-success"><i class="fas fa-edit"></i></a>';
                             $rows .= '<a href="'.base_url().'/masterapar/printl/'.$v['id_apar'].'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
                             $rows .= '</div>';
@@ -70,7 +74,7 @@
                 </tbody>
             </table>
             <nav aria-label="breadcrumb">
-			<?php echo $pager->links('bootstrap', 'Pagination_boot') ?> 
+			<?= ($pager->getPageCount() > 1)?$pager->links('bootstrap', 'Pagination_boot'):'' ?> 
 		</nav>
             </div>
         </div>

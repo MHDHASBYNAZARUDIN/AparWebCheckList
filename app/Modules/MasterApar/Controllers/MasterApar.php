@@ -35,13 +35,34 @@ class MasterApar extends Controller
         if ($this->request->getMethod() == 'post') {
             $lokasi       = $this->request->getVar('lokasi');
             #$records        = $agent->where('nama_biro LIKE \'%'.$nama_biro.'%\'')->findAll();
-            $records        = $agent->where('lokasi LIKE \'%'.$lokasi.'%\'')->paginate($this->cperpage,'bootstrap');
-            
+            #$records        = $agent->where('lokasi LIKE \'%'.$lokasi.'%\'')->paginate($this->cperpage,'bootstrap');
+            $records     = $agent->select('apar.id_apar,apar.masa_berlaku_awal,apar.masa_berlaku_akhir,
+            apar.foto,apar.Deskripsi,apar.noperiksa,apar.lokasi,apar.jenis
+            ,apar.created_at,apar.updated_at,Tjenis.jenis')
+                            ->where('lokasi LIKE \'%'.$lokasi.'%\'')
+                            ->join('Tjenis','Tjenis.id_jenis=apar.jenis','left') 
+                            ->paginate($this->cperpage,'bootstrap');
         }else{
             #$records    = $agent->findAll();
-            $records     = $agent->paginate($this->cperpage,'bootstrap');
+            #$records     = $agent->paginate($this->cperpage,'bootstrap');
+            $lokasi       = $this->request->getVar('lokasi');
+
+            $records     = $agent->select('apar.id_apar,apar.masa_berlaku_awal,apar.masa_berlaku_akhir,
+                            apar.foto,apar.Deskripsi,apar.noperiksa,apar.lokasi,apar.jenis
+                            ,apar.created_at,apar.updated_at,Tjenis.jenis')
+                            ->where('lokasi LIKE \'%'.$lokasi.'%\'')
+                            ->join('Tjenis','Tjenis.id_jenis=apar.jenis','left') 
+                            ->paginate($this->cperpage,'bootstrap');
+            
         }   
-         
+       /**  $records     = $umodel->select('users.id,users.email,users.firstname,users.lastname
+            *                ,groles.rolename,agents.nama_biro,users.status')
+             *               ->where('email LIKE \'%'.$email.'%\'')
+              *              ->join('groles','groles.id=users.role_id','left') 
+               *             ->join('agents','agents.id=users.agent_id','left')
+                *            ->findAll();
+         */
+        $ret = [];
         if(count($records) > 0){
             foreach($records as $k => $v){
                 
@@ -132,6 +153,7 @@ class MasterApar extends Controller
                 $data['mode']    = 'edit/'.$id_apar;
                 $data['rec']     = $record;
                 
+                
                 return view('MasterApar\Views\AddFormApar', $data);
 
             } else {
@@ -143,9 +165,15 @@ class MasterApar extends Controller
             $record = $oroles->find($id_apar);
             $jenis = $this->MasterAparLib->getjenisselect();
             $data['selec'] = $jenis;
+            //
             $data['mode']   = 'edit/'.$id_apar;
             $data['rec']    = $record;
-
+            
+           /**  echo '<pre>';
+                *echo '<br>';
+                *print_r($record);
+                *echo '</pre>';
+               * die(); */
             return view('MasterApar\Views\AddFormApar', $data);
         }
         

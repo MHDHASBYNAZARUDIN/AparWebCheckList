@@ -2,8 +2,7 @@
 namespace TransaksiApar\Controllers;
 use CodeIgniter\Controller;
 use \TransaksiApar\Libraries\TransaksiAparLib;
-use \MasterApar\Libraries\MasterAparLib;
-use \MasterApar\Models\MasterAparModel;
+use \TransaksiApar\Models\TransaksiAparModel;
 
 class TransaksiApar extends Controller
 {
@@ -28,11 +27,17 @@ class TransaksiApar extends Controller
     {   
         $data  = [];
         helper(['form']);
-        $agent = new MasterAparModel(); 
+        $agent = new TransaksiAparModel(); 
         if ($this->request->getMethod() == 'post') {
-            $lokasi       = $this->request->getVar('lokasi');
-            #$records        = $agent->where('nama_biro LIKE \'%'.$nama_biro.'%\'')->findAll();
-            $records        = $agent->where('lokasi LIKE \'%'.$lokasi.'%\'')->findAll();
+            $apar        = $this->request->getVar('created_at');
+            #$records    = $agent->where('nama_biro LIKE \'%'.$nama_biro.'%\'')->findAll();
+            $records     = $agent->select('transaksi.id_transaksi,transaksi.kondisifisik,transaksi.kondisipin,
+            transaksi.kondisitekanan,transaksi.kondisiselang,transaksi.kondisinozzle,transaksi.id_apar,
+            transaksi.created_at,transaksi.updated_at,apar.noperiksa,Tkondisi.kondisi')
+                            ->where('created_at LIKE \'%'.$apar.'%\'')
+                            ->join('Tkondisi','Tkondisi.id_kondisi=transaksi.kondisifisik','left')
+                            ->join('apar','apar.id_apar=transaksi.id_apar','left')
+                            ->findAll();
             
         }else{
             $records    = $agent->findAll();
@@ -40,7 +45,8 @@ class TransaksiApar extends Controller
         }
 
         $kondisi = $this->TransaksiAparLib->getkondisiselect();
-        
+        $noperiksa = $this->TransaksiAparLib->getaparselect();
+        $data['pilihapar'] = $noperiksa;
         $data['pilih']  = $kondisi;
         $data['reco']    = $records;
         //echo '<pre>';
@@ -51,6 +57,38 @@ class TransaksiApar extends Controller
         //$data           = [];
     
         
-        return view('TransaksiApar\Views\index', $data);
+        
+        return view('TransaksiApar\Views\viewdetail', $data);
+    }
+
+    public function add(){
+        $data  = [];
+        helper(['form']);
+        $oroles = new TransaksiAparModel(); 
+        //$Tjenis = new Tajenis;
+        if ($this->request->getMethod() == 'post') {
+            $response = $this->TransaksiAparLib->datastore();
+            if ($response->status != \Utils\Libraries\UtilsResponseLib::$SUCCESS) {
+                //failed requirement 
+                $data = $response->error;
+                $kondisi = $this->TransaksiAparLib->getkondisiselect();
+                $noperiksa = $this->TransaksiAparLib->getaparselect();
+                $data['pilihapar'] = $noperiksa;
+                $data['pilih']  = $kondisi;
+                $data['mode']    = 'add';                
+                return view('TransaksiApar\Views\index', $data);
+            } else {
+                //on success 
+                return redirect()->to(base_url() . '/transaksiapar');
+            }
+        }else{
+            //load edit first time   
+            $kondisi = $this->TransaksiAparLib->getkondisiselect();
+            $noperiksa = $this->TransaksiAparLib->getaparselect();
+            $data['pilihapar'] = $noperiksa;
+            $data['pilih']  = $kondisi;   
+            $data['mode']    = 'add';
+            return view('TransaksiApar\Views\index', $data);
+        }
     }
 }

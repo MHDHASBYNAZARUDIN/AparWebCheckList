@@ -1,32 +1,28 @@
 <?php 
 namespace TransaksiApar\Libraries;
 use TransaksiApar\Models\TransaksiAparModel;
+use MasterApar\Models\MasterAparModel;
 use TransaksiApar\Models\KondisiModel;
 use Utils\Libraries\UtilsResponseLib;
 use CodeIgniter\HTTP\Response;
 
 class TransaksiAparLib {
-
+    use UtilsResponseLib;
     public function __construct() {
         $config = config(App::class);
         $this->response = new Response($config);
     }
 
-    public function storedata(){
+    public function datastore(){
         #---copy code start----
         $request = \Config\Services::request();
         $rules = [
-            'noperiksa'             => 'required',
-            'lokasi'                => 'required|min_length[3]|max_length[20]',
-            'jenis'                 => 'required',
-            'masa_berlaku_awal'     => 'required',
-            'masa_berlaku_akhir'    => 'required',
-            'Deskripsi'             => 'required|min_length[0]|max_length[255]',
             'kondisifisik'          => 'required',
             'kondisipin'            => 'required',
             'kondisitekanan'        => 'required',
             'kondisinozzle'         => 'required',
             'kondisiselang'         => 'required',
+            'id_apar'               => 'required',
         ];
         $errors = [];
         //Sesuaikan lagi dibawah 
@@ -42,17 +38,12 @@ class TransaksiAparLib {
         } else {
             $scheduleModel = new TransaksiAparModel();
             $newData = [
-                'noperiksa'             => $request->getVar('noperiksa'),
-                'lokasi'                => $request->getVar('lokasi'),
-                'jenis'                 => $request->getVar('jenis'),
-                'masa_berlaku_awal'     => $request->getVar('masa_berlaku_awal'),
-                'masa_berlaku_akhir'    => $request->getVar('masa_berlaku_akhir'),
-                'Deskripsi'             => $request->getVar('Deskripsi'),
                 'kondisifisik'          => $request->getVar('kondisifisik'),
                 'kondisipin'            => $request->getVar('kondisipin'),
                 'kondisitekanan'        => $request->getVar('kondisitekanan'),
                 'kondisinozzle'         => $request->getVar('kondisinozzle'),
                 'kondisiselang'         => $request->getVar('kondisiselang'),
+                'id_apar'               => $request->getVar('id_apar'),
             ];
             $idcheck = $request->getVar('id_transaksi');
             if($idcheck){
@@ -69,7 +60,7 @@ class TransaksiAparLib {
             print_r($data);
             echo '</pre>';*/
             #die('SKIP');   
-            $this->savePhoto($eid);
+            #$this->savePhoto($eid);
 
             if ($data) {
                 session()->setFlashdata('success', lang('TransaksiApar.register.created'));
@@ -85,5 +76,10 @@ class TransaksiAparLib {
     public function getkondisiselect(){
         $kondisiModel = new KondisiModel();
         return $kondisiModel->select('id_kondisi, kondisi')->get()->getResult();
+    }
+
+    public function getaparselect(){
+        $aparModel = new MasterAparModel();
+        return $aparModel->select('id_apar, noperiksa')->get();
     }
 }

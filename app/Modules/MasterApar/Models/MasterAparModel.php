@@ -7,7 +7,7 @@ class MasterAparModel extends Model
     protected $table = 'apar';
     protected $primaryKey = 'id_apar';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['lokasi','jenis','masa_berlaku_awal','masa_berlaku_akhir','foto','Deskripsi'];
+    protected $allowedFields = ['noperiksa','lokasi','jenis','masa_berlaku_awal','masa_berlaku_akhir','foto','Deskripsi'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
     

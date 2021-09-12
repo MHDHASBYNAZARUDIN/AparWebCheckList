@@ -16,20 +16,11 @@
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
                 <div class="shadow p-3 mb-5 bg-light rounded">
+                    <label for="lokasi">No. Periksa :</label>
+                    <input type="text" class="form-control" id="noperiksa" name="noperiksa" placeholder="No. Periksa" value="<?=isset($rec['noperiksa'])?$rec['noperiksa']:''; ?>">
+            <!-- ******************************************************************************** -->
                     <label for="lokasi">LOKASI :</label>
                     <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="lokasi" value="<?=isset($rec['lokasi'])?$rec['lokasi']:''; ?>">
-            <!-- ******************************************************************************** 
-                    <label for="lokasi">Jenis Apar</label>
-                    <input type="text" class="form-control" id="jenis" name="jenis" placeholder="jenis apar" value="<?=isset($rec['jenis'])?$rec['jenis']:''; ?>">
-            -->
-            <!--
-                <label for="lokasi">Jenis Apar</label>
-                <select class="custom-select">
-                <//?php foreach ($records as $item => $k) : ?>
-                <option value="<//? $k['jenis'];?>"></option>
-                <//?php endforeach; ?>
-            </select>
-                -->
                 <div class="form-group">
                                 <label for="jenis">JENIS APAR :</label>
                                 <select class="form-control" id="jenis" name="jenis">
@@ -37,8 +28,8 @@
                                     <?php 
                                         $options = ''; 
                                         foreach($selec as $k => $v){
-                                           $selected = isset($rec->jenis)?($rec->jenis ==$v['id_jenis']?'selected':''):''; 
-                                           $options .= '<option value="'.$v->jenis.'" '.$selected.'>'.$v->jenis.'</option>';
+                                           $selected = isset($rec['jenis'])?($rec['jenis'] ==$v->id_jenis?'selected':''):''; 
+                                           $options .= '<option value="'.$v->id_jenis.'" '.$selected.'>'.$v->jenis.'</option>';
                                         }
                                         echo $options;
                                     ?>

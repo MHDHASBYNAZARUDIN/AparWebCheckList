@@ -7,8 +7,7 @@ class TransaksiAparModel extends Model
     protected $table = 'transaksi';
     protected $primaryKey = 'id_transaksi';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['noperiksa','lokasi','jenis','masa_berlaku_awal','masa_berlaku_akhir',
-                                'foto','Deskripsi','kondisifisik','kondisipin','kondisitekanan',
+    protected $allowedFields = ['kondisifisik','kondisipin','kondisitekanan',
                                 'kondisinozzle','kondisiselang'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
@@ -19,12 +18,12 @@ class TransaksiAparModel extends Model
     }
     
     protected function beforeInsert(array $data) {
-        $data['data']['dibuat'] = date('Y-m-d H:i:s');
+        $data['data']['created_at'] = date('Y-m-d H:i:s');
         return $data;
     }
 
     protected function beforeUpdate(array $data) {
-        $data['data']['diedit'] = date('Y-m-d H:i:s');
+        $data['data']['updated_at'] = date('Y-m-d H:i:s');
         return $data;
     }
 }
