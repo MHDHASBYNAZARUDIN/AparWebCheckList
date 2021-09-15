@@ -23,6 +23,7 @@
                 </div>
             </form>
             <!--end of form navigation-->
+        <div class="table-responsive">
         <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                     <tr>
@@ -35,9 +36,6 @@
                     <th scope="col">FOTO</th>
                     <th scope="col">DESKRIPSI</th>
                     <th scope="col">CREATED</th>
-                    <th scope="col">CREATED BY</th>
-                    <th scope="col">UPDATED</th>
-                    <th scope="col">UPDATED BY</th>
                     <th scope="col">ACTION</th>
                     </tr>
                 </thead>
@@ -56,9 +54,6 @@
                             $rows .= '</td>';
                             $rows .= '<td>'.$v['Deskripsi'].'</td>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['created_at'])).'</td>';
-                            $rows .= '<td>'.session()->get('firstname').'</td>';
-                            $rows .= '<td>'.date('d M Y',strtotime($v['updated_at'])).'</td>';
-                            $rows .= '<td>'.session()->get('firstname').'</td>';
                             $rows .= '<td>';
                             $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
                             $rows .= '<a href="'.base_url().'/transaksiapar/add'.'" class="btn btn-warning"><i class="fas fa-tasks"></i></a>';
@@ -73,6 +68,7 @@
                     ?> 
                 </tbody>
             </table>
+            </div>
             <nav aria-label="breadcrumb">
 			<?= ($pager->getPageCount() > 1)?$pager->links('bootstrap', 'Pagination_boot'):'' ?> 
 		</nav>

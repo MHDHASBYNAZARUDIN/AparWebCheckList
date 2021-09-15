@@ -22,7 +22,7 @@ class TransaksiAparLib {
             'kondisitekanan'        => 'required',
             'kondisinozzle'         => 'required',
             'kondisiselang'         => 'required',
-            'id_apar'               => 'required',
+            'noperiksaapar'          => 'required',
         ];
         $errors = [];
         //Sesuaikan lagi dibawah 
@@ -43,7 +43,7 @@ class TransaksiAparLib {
                 'kondisitekanan'        => $request->getVar('kondisitekanan'),
                 'kondisinozzle'         => $request->getVar('kondisinozzle'),
                 'kondisiselang'         => $request->getVar('kondisiselang'),
-                'id_apar'               => $request->getVar('id_apar'),
+                'noperiksaapar'         => $request->getVar('noperiksaapar'),
             ];
             $idcheck = $request->getVar('id_transaksi');
             if($idcheck){

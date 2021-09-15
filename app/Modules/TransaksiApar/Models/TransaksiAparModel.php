@@ -8,7 +8,7 @@ class TransaksiAparModel extends Model
     protected $primaryKey = 'id_transaksi';
     protected $useAutoIncrement = true;
     protected $allowedFields = ['kondisifisik','kondisipin','kondisitekanan',
-                                'kondisinozzle','kondisiselang'];
+                                'kondisinozzle','kondisiselang','noperiksaapar'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
     
@@ -26,4 +26,6 @@ class TransaksiAparModel extends Model
         $data['data']['updated_at'] = date('Y-m-d H:i:s');
         return $data;
     }
+    
+
 }

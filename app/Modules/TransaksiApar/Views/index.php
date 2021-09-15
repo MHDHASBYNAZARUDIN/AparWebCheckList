@@ -18,22 +18,19 @@
                     <div class="shadow p-3 mb-5 bg-light rounded">
 
                     <div class="form-group">
-                                    <label for="id_apar">NO. PERIKSA :</label>
-                                    <select class="form-control" id="id_apar" name="id_apar">
-                                        <option value="0"></option>
+                                    <label for="noperiksaapar">NO. PERIKSA :</label>
+                                    <select class="form-control" id="noperiksaapar" name="noperiksaapar">
+                                    <option value="0"></option>
                                         <?php 
                                             $options = ''; 
                                             foreach($pilihapar as $k => $v){
-                                            $selected = isset($reco['id_apar'])?($reco['id_apar'] == $v['id_apar']?'selected':''):''; 
+                                            $selected = isset($rec['noperiksaapar'])?($rec['noperiksaapar'] == $v['id_apar']?'selected':''):''; 
                                             $options .= '<option value="'.$v['id_apar'].'" '.$selected.'>'.$v['noperiksa'].'</option>';
                                             }
                                             echo $options;
                                         ?>
                                     </select>
                                 </div>
-
-                        <div class="form-row">
-                            <div class="col-6">
                                 <div class="form-group">
                                     <label for="kondisifisik">KONDISI FISIK TABUNG:</label>
                                     <select class="form-control" id="kondisifisik" name="kondisifisik">
@@ -41,15 +38,12 @@
                                         <?php 
                                             $options = ''; 
                                             foreach($pilih as $k => $v){
-                                            $selected = isset($reco['kondisifisik'])?($reco['kondisifisik'] ==$v->id_kondisi?'selected':''):''; 
+                                            $selected = isset($rec['kondisifisik'])?($rec['kondisifisik'] ==$v->id_kondisi?'selected':''):''; 
                                             $options .= '<option value="'.$v->id_kondisi.'" '.$selected.'>'.$v->kondisi.'</option>';
                                             }
                                             echo $options;
                                         ?>
                                     </select>
-                                </div>
-                        </div>
-                    <div class="col-6">
                         <div class="form-group">
                                 <label for="kondisipin">KONDISI PIN :</label>
                                 <select class="form-control" id="kondisipin" name="kondisipin">
@@ -57,18 +51,14 @@
                                     <?php 
                                         $options = ''; 
                                         foreach($pilih as $k => $v){
-                                           $selected = isset($reco['kondisipin'])?($reco['kondisipin'] ==$v->id_kondisi?'selected':''):''; 
+                                           $selected = isset($rec['kondisipin'])?($rec['kondisipin'] ==$v->id_kondisi?'selected':''):''; 
                                            $options .= '<option value="'.$v->id_kondisi.'" '.$selected.'>'.$v->kondisi.'</option>';
                                         }
                                         echo $options;
                                     ?>
                                 </select>
                         </div>
-                    </div>
                 </div>
-
-                <div class="form-row">
-                    <div class="col-4">
                             <div class="form-group">
                                 <label for="kondisitekanan">KONDISI TEKANAN :</label>
                                 <select class="form-control" id="kondisitekanan" name="kondisitekanan">
@@ -76,15 +66,14 @@
                                     <?php 
                                         $options = ''; 
                                         foreach($pilih as $k => $v){
-                                           $selected = isset($reco['kondisitekanan'])?($reco['kondisitekanan'] ==$v->id_kondisi?'selected':''):''; 
+                                           $selected = isset($rec['kondisitekanan'])?($rec['kondisitekanan'] ==$v->id_kondisi?'selected':''):''; 
                                            $options .= '<option value="'.$v->id_kondisi.'" '.$selected.'>'.$v->kondisi.'</option>';
                                         }
                                         echo $options;
                                     ?>
                                 </select>
                             </div>
-                    </div>
-                    <div class="col-4">
+                   
                         <div class="form-group">
                                 <label for="kondisinozzle">KONDISI NOZZLE :</label>
                                 <select class="form-control" id="kondisinozzle" name="kondisinozzle">
@@ -92,16 +81,16 @@
                                     <?php 
                                         $options = ''; 
                                         foreach($pilih as $k => $v){
-                                           $selected = isset($reco['kondisinozzle'])?($reco['kondisinozzle'] ==$v->id_kondisi?'selected':''):''; 
+                                           $selected = isset($rec['kondisinozzle'])?($rec['kondisinozzle'] ==$v->id_kondisi?'selected':''):''; 
                                            $options .= '<option value="'.$v->id_kondisi.'" '.$selected.'>'.$v->kondisi.'</option>';
                                         }
                                         echo $options;
                                     ?>
                                 </select>
                         </div>
-                    </div>
                     
-                    <div class="col-4">
+                    
+                   
                         <div class="form-group">
                                 <label for="kondisiselang">KONDISI SELANG :</label>
                                 <select class="form-control" id="kondisiselang" name="kondisiselang">
@@ -109,19 +98,15 @@
                                     <?php 
                                         $options = ''; 
                                         foreach($pilih as $k => $v){
-                                           $selected = isset($reco['kondisiselang'])?($reco['kondisiselang'] ==$v->id_kondisi?'selected':''):''; 
+                                           $selected = isset($rec['kondisiselang'])?($rec['kondisiselang'] ==$v->id_kondisi?'selected':''):''; 
                                            $options .= '<option value="'.$v->id_kondisi.'" '.$selected.'>'.$v->kondisi.'</option>';
                                         }
                                         echo $options;
                                     ?>
                                 </select>
                         </div>
-                    </div>
-                    </div>
-
-
                     <!--    -->
-                                    </div>
+                      </div>
                 
                 <input type="hidden" name="id_transaksi" id="id_transaksi" value="<?=isset($reco['id_transaksi'])?$reco['id_transaksi']:''; ?>">
                 <button type="submit" class="btn btn-info mb-2">Save</button>

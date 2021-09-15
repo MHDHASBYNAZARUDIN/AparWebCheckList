@@ -23,6 +23,7 @@
                 </div>
             </form>
             <!--end of form navigation-->
+        <div class="table-responsive">
         <table class="table table-striped table-hover">
                 <thead class="thead-dark">
                     <tr>
@@ -45,8 +46,8 @@
                             $rows .='<tr>';
                             $rows .= '<th>'.$b++.'</th>';
                             $rows .= '<td>'.date('d M Y',strtotime($v['created_at'])).'</td>';
-                            $rows .= '<td>'.$v['id_apar'].'</td>';
-                            $rows .= '<td>'.$v['kondisifisik'].'</td>';
+                            $rows .= '<td>'.$v['noperiksa'].'</td>';
+                            $rows .= '<td>'.$v['kondisi'].'</td>';
                             $rows .= '<td>'.$v['kondisipin'].'</td>';
                             $rows .= '<td>'.$v['kondisinozzle'].'</td>';
                             $rows .= '<td>'.$v['kondisitekanan'].'</td>';
@@ -64,6 +65,7 @@
                     ?> 
                 </tbody>
             </table>
+            </div>
             <nav aria-label="breadcrumb">
 			
 		</nav>
