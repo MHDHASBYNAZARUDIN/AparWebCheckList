@@ -4,11 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6
+class ComposerStaticInit2add20f8d5d78cf77ea9aae004655c5c
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
@@ -37,7 +36,6 @@ class ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6
         ),
         'L' => 
         array (
-            'Laminas\\ZendFrameworkBridge\\' => 28,
             'Laminas\\Escaper\\' => 16,
         ),
         'K' => 
@@ -85,10 +83,6 @@ class ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
-        ),
-        'Laminas\\ZendFrameworkBridge\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src',
         ),
         'Laminas\\Escaper\\' => 
         array (
@@ -717,10 +711,10 @@ class ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitc8274c548fd8f11672b0346cc836a9d6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2add20f8d5d78cf77ea9aae004655c5c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2add20f8d5d78cf77ea9aae004655c5c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit2add20f8d5d78cf77ea9aae004655c5c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit2add20f8d5d78cf77ea9aae004655c5c::$classMap;
 
         }, null, ClassLoader::class);
     }
