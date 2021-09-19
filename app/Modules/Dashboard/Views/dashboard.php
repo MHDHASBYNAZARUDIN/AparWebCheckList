@@ -1,15 +1,23 @@
 <?= $this->extend('layouts/general') ?>
 <?= $this->section('content') ?>
 <div class="container">
+    <div class="row">
+        <br>
+    </div>
   <div class="row">
     <div class="col">
-      Text
-      <p class="font-weight-bold">Landing template for startups <br>
-Our landing page template works on all devices, so <br> you only have to set it up once, and get <br> beautiful results forever..</p>
+      <h1 class="font-weight-bold text-info" > Selamat Datang di Web <br> Aplikasi Apar </h1>
+<h3 class="font-weight-normal"> Aplikasi berbasis web ini bertujuan <br> untuk mempermudah petugas dalam pengecekan <br> alat pemadam kebakaran secara berkala.</h3>
     </div>
     <div class="col-5">
+        <div class="p-3 bg-info">
+    </div>
     <!-- Ilustrasi -->
-    <img src="/images/apar2.jpg" width="450">
+    <img src="/images/apar2.jpg" width="445">
+    <br>
+    <div class="p-3 bg-info">
+    </div>
+    </div>
     </div>
   </div>
 
