@@ -35,7 +35,7 @@
                             <i class="fas fa-bars"></i> DATA
                         </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<?=base_url()?>/#">Data Cek Apar</a>
+                        
                         <a class="dropdown-item" href="<?=base_url()?>/masterapar">Data Apar</a>
                         <a class="dropdown-item" href="<?=base_url()?>/masterjenisapar">Data Jenis Apar</a>
                         
