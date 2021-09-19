@@ -24,36 +24,39 @@ class TransaksiApar extends Controller
      *
      * @return View
      */
-    public function index()
+    public function index($noperiksa='')
     {   
         $data  = [];
         helper(['form']);
         $agent = new TransaksiAparModel();
         $reckondisi = new KondisiModel();
         if ($this->request->getMethod() == 'post') {
-            $apar        = $this->request->getVar('transaksi.created_at');
+            $record = $agent->find($noperiksa);
+            $apar        = $this->request->getVar('transaksi.noperiksaapar');
             #$records    = $agent->where('nama_biro LIKE \'%'.$nama_biro.'%\'')->findAll();
             $records     = $agent->select('transaksi.id_transaksi,transaksi.kondisifisik,transaksi.kondisipin,
             transaksi.kondisitekanan,transakasi.selang,transaksi.kondisinozzle,transaksi.noperiksaapar,
             transaksi.created_at,transaksi.updated_at,apar.noperiksa,Tkondisi.kondisi')
-             ->where('transaksi.created_at LIKE \'%'.$apar.'%\'')
+             ->where('transaksi.noperiksaapar LIKE \'%'.$apar.'%\'')
              ->join('apar','apar.id_apar=transaksi.noperiksaapar','left')
              ->join('Tkondisi','Tkondisi.id_kondisi=transaksi.kondisifisik','left')
-             ->findAll();
+             ->findAll($noperiksa);
             
         }else{
-            $apar        = $this->request->getVar('transaksi.created_at');
+            $record = $agent->find($noperiksa);
+            $apar        = $this->request->getVar('transaksi.noperiksaapar');
+            
             $records     = $agent->select('transaksi.id_transaksi,transaksi.kondisifisik,transaksi.kondisipin,
             transaksi.kondisitekanan,transaksi.kondisiselang,transaksi.kondisinozzle,transaksi.noperiksaapar,
             transaksi.created_at,transaksi.updated_at,apar.noperiksa,Tkondisi.kondisi')
-             ->where('transaksi.created_at LIKE \'%'.$apar.'%\'')
+             ->where('transaksi.noperiksaapar LIKE \'%'.$apar.'%\'')
              ->join('apar','apar.id_apar=transaksi.noperiksaapar','left')
              ->join('Tkondisi','Tkondisi.id_kondisi=transaksi.kondisifisik','left')
-             ->findAll();
+             ->findAll($noperiksa);
         }
         $arrkondisi =[];
         $ret =[];
-        $arrconditions = $reckondisi->findAll();
+        $arrconditions = $reckondisi->findAll($noperiksa);
         
         foreach ($arrconditions as $k => $v){
             $arrkondisi[$v['id_kondisi']] = $v['kondisi'];
@@ -69,7 +72,7 @@ class TransaksiApar extends Controller
             }
         }
 
-        $kondisi = $this->TransaksiAparLib->getkondisiselect();
+        $kondisi = $this->TransaksiAparLib->getkondisiselect($noperiksa);
         $aparselect = $this->TransaksiAparLib->getaparselect();
         $data['pilihapar'] = $aparselect;
         $data['pilih']  = $kondisi;
@@ -78,7 +81,7 @@ class TransaksiApar extends Controller
         return view('TransaksiApar\Views\viewdetail', $data);
     }
 
-    public function add(){
+    public function add($id_apar=''){
         $data  = [];
         helper(['form']);
         $oroles = new TransaksiAparModel(); 
@@ -90,23 +93,25 @@ class TransaksiApar extends Controller
             if ($response->status != \Utils\Libraries\UtilsResponseLib::$SUCCESS) {
                 //failed requirement
                 $data = $response->error;
+                $record = $oroles->find($id_apar);
                 $kondisi = $this->TransaksiAparLib->getkondisiselect();
                 $noperiksa = $this->TransaksiAparLib->getaparselect($id_apar);
                 $data['pilihapar'] = $noperiksa;
                 $data['pilih']  = $kondisi;
-                $data['mode']    = 'add';              
+                $data['mode']    = 'add'.$id_apar;              
                 return view('TransaksiApar\Views\index', $data);
             } else {
                 //on success 
-                return redirect()->to(base_url() . '/transaksiapar');
+                return redirect()->to(base_url() . '/transaksiapar/'.$id_apar);
             }
         }else{
             //load edit first time
+            $record = $oroles->find($id_apar);
             $kondisi = $this->TransaksiAparLib->getkondisiselect();
-            $noperiksa = $this->TransaksiAparLib->getaparselect();
+            $noperiksa = $this->TransaksiAparLib->getaparselect($id_apar);
             $data['pilihapar'] = $noperiksa;
             $data['pilih']  = $kondisi;   
-            $data['mode']    = 'add';
+            $data['mode']    = 'add'.$id_apar;
             return view('TransaksiApar\Views\index', $data);
         }
     }

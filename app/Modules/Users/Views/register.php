@@ -23,19 +23,34 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="email"><?=lang('Users.form.email')?></label>
+                            <div class="input-group w-100">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-at"></i>
+                                </span>
                                 <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email')?>">
+                            </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label for="password"><?=lang('Users.form.password')?></label>
+                            <div class="input-group w-100">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-key"></i>
+                                </span>
                                 <input type="password" class="form-control" name="password" id="password" value="">
+                            </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label for="password"><?=lang('Users.form.password_confirm')?></label>
+                                <div class="input-group w-100">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-key"></i>
+                                    </span>
                                 <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="">
+                                </div>
                             </div>
                         </div>
                         <?php if (isset($validation)) : ?>

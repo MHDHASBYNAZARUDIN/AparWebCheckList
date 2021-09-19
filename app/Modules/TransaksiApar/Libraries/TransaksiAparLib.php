@@ -78,8 +78,10 @@ class TransaksiAparLib {
         return $kondisiModel->select('id_kondisi, kondisi')->get()->getResult();
     }
 
-    public function getaparselect(){
+    public function getaparselect($id_apar=''){
         $aparModel = new MasterAparModel();
-        return $aparModel->select('id_apar, noperiksa')->get();
+        return $aparModel->select('id_apar, noperiksa')
+        ->where('apar.id_apar LIKE \'%'.$id_apar.'%\'')->get();
     }
+    
 }

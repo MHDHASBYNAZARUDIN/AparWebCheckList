@@ -56,8 +56,8 @@
                             $rows .= '<td>'.date('d M Y',strtotime($v['created_at'])).'</td>';
                             $rows .= '<td>';
                             $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
-                            $rows .= '<a href="'.base_url().'/transaksiapar/add'.'" class="btn btn-warning"><i class="fas fa-tasks"></i></a>';
-                            $rows .= '<a href="'.base_url().'/transaksiapar'.'" class="btn btn-dark"><i class="fas fa-info-circle"></i></a>';
+                            $rows .= '<a href="'.base_url().'/transaksiapar/add/'.$v['id_apar'].'" class="btn btn-warning"><i class="fas fa-tasks"></i></a>';
+                            $rows .= '<a href="'.base_url().'/transaksiapar/'.$v['id_apar'].'" class="btn btn-dark"><i class="fas fa-info-circle"></i></a>';
                             $rows .= '<a href="'.base_url().'/masterapar/edit/'.$v['id_apar'].'" class="btn btn-success"><i class="fas fa-edit"></i></a>';
                             $rows .= '<a href="'.base_url().'/masterapar/printl/'.$v['id_apar'].'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
                             $rows .= '</div>';

@@ -20,7 +20,7 @@
                     <div class="form-group">
                                     <label for="noperiksaapar">NO. PERIKSA :</label>
                                     <select class="form-control" id="noperiksaapar" name="noperiksaapar">
-                                    <option value="0"></option>
+                                    
                                         <?php 
                                             $options = ''; 
                                             foreach($pilihapar as $k => $v){
@@ -33,6 +33,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kondisifisik">KONDISI FISIK TABUNG:</label>
+                                <div class="input-group w-100">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                     <select class="form-control" id="kondisifisik" name="kondisifisik">
                                         <option value="0"></option>
                                         <?php 
@@ -44,8 +48,13 @@
                                             echo $options;
                                         ?>
                                     </select>
+                                </div>
                         <div class="form-group">
                                 <label for="kondisipin">KONDISI PIN :</label>
+                                <div class="input-group w-100">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                 <select class="form-control" id="kondisipin" name="kondisipin">
                                     <option value="0"></option>
                                     <?php 
@@ -57,10 +66,15 @@
                                         echo $options;
                                     ?>
                                 </select>
+                                </div>
                         </div>
                 </div>
                             <div class="form-group">
                                 <label for="kondisitekanan">KONDISI TEKANAN :</label>
+                                <div class="input-group w-100">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                 <select class="form-control" id="kondisitekanan" name="kondisitekanan">
                                     <option value="0"></option>
                                     <?php 
@@ -72,10 +86,15 @@
                                         echo $options;
                                     ?>
                                 </select>
+                                </div>
                             </div>
                    
                         <div class="form-group">
                                 <label for="kondisinozzle">KONDISI NOZZLE :</label>
+                                <div class="input-group w-100">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                 <select class="form-control" id="kondisinozzle" name="kondisinozzle">
                                     <option value="0"></option>
                                     <?php 
@@ -87,12 +106,17 @@
                                         echo $options;
                                     ?>
                                 </select>
+                                </div>
                         </div>
                     
                     
                    
                         <div class="form-group">
                                 <label for="kondisiselang">KONDISI SELANG :</label>
+                                <div class="input-group w-100">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-check"></i>
+                                    </span>
                                 <select class="form-control" id="kondisiselang" name="kondisiselang">
                                     <option value="0"></option>
                                     <?php 
@@ -104,6 +128,7 @@
                                         echo $options;
                                     ?>
                                 </select>
+                                </div>
                         </div>
                     <!--    -->
                       </div>
