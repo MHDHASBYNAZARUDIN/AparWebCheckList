@@ -58,11 +58,38 @@ class MasterJenisApar extends Controller
         }
        //$records = $model;
         $data['records'] = $records;
+        $data['pager']   = $agent->pager;
         helper(['form']);        
         return view('MasterJenisApar\Views\index', $data);
     }
 
+    public function add(){
+        $data  = [];
+        helper(['form']);
+        $oroles = new Tajenis(); 
+        //$Tjenis = new Tajenis;
+        if ($this->request->getMethod() == 'post') {
+            $response = $this->MasterJenisAparLib->storedata();
+            if ($response->status != \Utils\Libraries\UtilsResponseLib::$SUCCESS) {
+                //failed requirement 
+                $data = $response->error;
+                $data['mode']    = 'add';                
+                return view('MasterJenisApar\Views\addjenis', $data);
+            } else {
+                //on success 
+                return redirect()->to(base_url() . '/masterjenisapar');
+            }
+        }else{
+            //load edit first time   
+            $data['mode']    = 'add';
+            return view('MasterJenisApar\Views\addjenis', $data);
+        }
+    }
+
+    public function delete($id){
+        $oroles = new TaJenis();
+        $oroles->delete($id); 
+        return redirect()->to(base_url() . '/masterjenisapar');
+    }
+
 }
-    
-    
-    

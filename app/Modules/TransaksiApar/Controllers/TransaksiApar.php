@@ -44,19 +44,30 @@ class TransaksiApar extends Controller
             
         }else{
             $record = $agent->find($noperiksa);
-            $apar        = $this->request->getVar('transaksi.noperiksaapar');
+            //$apar        = $this->request->getVar('transaksi.noperiksaapar');
+            if($noperiksa){
+                $records     = $agent->select('transaksi.id_transaksi,transaksi.kondisifisik,transaksi.kondisipin,
+                        transaksi.kondisitekanan,transaksi.kondisiselang,transaksi.kondisinozzle,transaksi.noperiksaapar,
+                        transaksi.created_at,transaksi.updated_at,apar.noperiksa,Tkondisi.kondisi')
+                        ->where('transaksi.noperiksaapar='.$noperiksa)
+                        ->join('apar','apar.id_apar=transaksi.noperiksaapar','left')
+                        ->join('Tkondisi','Tkondisi.id_kondisi=transaksi.kondisifisik','left')
+                        ->findAll();
+            }else{
+                $records     = $agent->select('transaksi.id_transaksi,transaksi.kondisifisik,transaksi.kondisipin,
+                        transaksi.kondisitekanan,transaksi.kondisiselang,transaksi.kondisinozzle,transaksi.noperiksaapar,
+                        transaksi.created_at,transaksi.updated_at,apar.noperiksa,Tkondisi.kondisi')
+                        //->where('transaksi.noperiksaapar LIKE \'%'.$apar.'%\'')
+                        ->join('apar','apar.id_apar=transaksi.noperiksaapar','left')
+                        ->join('Tkondisi','Tkondisi.id_kondisi=transaksi.kondisifisik','left')
+                        ->findAll();
+            }
             
-            $records     = $agent->select('transaksi.id_transaksi,transaksi.kondisifisik,transaksi.kondisipin,
-            transaksi.kondisitekanan,transaksi.kondisiselang,transaksi.kondisinozzle,transaksi.noperiksaapar,
-            transaksi.created_at,transaksi.updated_at,apar.noperiksa,Tkondisi.kondisi')
-             ->where('transaksi.noperiksaapar LIKE \'%'.$apar.'%\'')
-             ->join('apar','apar.id_apar=transaksi.noperiksaapar','left')
-             ->join('Tkondisi','Tkondisi.id_kondisi=transaksi.kondisifisik','left')
-             ->findAll($noperiksa);
+            
         }
         $arrkondisi =[];
         $ret =[];
-        $arrconditions = $reckondisi->findAll($noperiksa);
+        $arrconditions = $reckondisi->findAll();
         
         foreach ($arrconditions as $k => $v){
             $arrkondisi[$v['id_kondisi']] = $v['kondisi'];
@@ -71,6 +82,13 @@ class TransaksiApar extends Controller
                 $ret[] = $v;
             }
         }
+
+           /* echo '<pre>';
+               echo '<br>';
+               print_r($arrconditions);
+               print_r($ret);
+               echo '</pre>';
+               die();*/
 
         $kondisi = $this->TransaksiAparLib->getkondisiselect($noperiksa);
         $aparselect = $this->TransaksiAparLib->getaparselect();

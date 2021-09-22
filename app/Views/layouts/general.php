@@ -9,8 +9,8 @@
         <script type="text/javascript" src="/assets/js/jquery/jquery-3.5.1.js"></script>
         <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript" src="/assets/js/jquery/datepicker.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-        <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/releases/v5.15.4/css/all.css">
+        <script src="/releases/v5.15.4/js/all.js" ></script>
     </head>
     <body>
         <?php 
