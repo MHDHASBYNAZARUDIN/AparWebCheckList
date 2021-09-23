@@ -4,7 +4,8 @@
 <style>
 
   .jumbotron-fluid{
-  background-image: url("http://localhost:8080/aparwall.jpg");
+    background-image: url("http://localhost:8080/images/aparwall.jpg");
+    height : 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -17,7 +18,7 @@
 <div class="row mt-5">
     <div class="col-md-6">
       <div class="py-5">
-        <!-- menu + copywriting -->
+        <!-- menu + copy writing -->
         <strong><h1 class="text-primary font-weight-bolder display-4">Selamat Datang di <br> Web Aplikasi APAR</h1></strong>
         <div class="mt-3 text-white">
         Aplikasi berbasis Web ini bertujuan <br> untuk mempermudan petugas dalam pengecekan <br> alat pemadam kebakaran secara berkala.
@@ -47,3 +48,6 @@
 
 
 <?= $this->endSection() ?>
+
+
+
