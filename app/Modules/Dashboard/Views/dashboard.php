@@ -1,25 +1,49 @@
 <?= $this->extend('layouts/general') ?>
 <?= $this->section('content') ?>
-<div class="container">
-    <div class="row">
-        <br>
+
+<style>
+
+  .jumbotron-fluid{
+  background-image: url("http://localhost:8080/aparwall.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-top: 30px;
+ }
+</style>
+
+<div class="jumbotron jumbotron-fluid">
+<div class="container gambar full-width-image">
+<div class="row mt-5">
+    <div class="col-md-6">
+      <div class="py-5">
+        <!-- menu + copywriting -->
+        <strong><h1 class="text-primary font-weight-bolder display-4">Selamat Datang di <br> Web Aplikasi APAR</h1></strong>
+        <div class="mt-3 text-white">
+        Aplikasi berbasis Web ini bertujuan <br> untuk mempermudan petugas dalam pengecekan <br> alat pemadam kebakaran secara berkala.
+        </div>  
+  <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-search"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#"><i class="fas fa-database"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#"><i class="far fa-calendar-alt"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"><i class="fas fa-tasks"></i></a>
+  </li>
+</ul>
+
+      </div>      
     </div>
-  <div class="row">
-    <div class="col">
-      <h1 class="font-weight-bold text-info" > Selamat Datang di Web <br> Aplikasi Apar </h1>
-<h3 class="font-weight-normal"> Aplikasi berbasis web ini bertujuan <br> untuk mempermudah petugas dalam pengecekan <br> alat pemadam kebakaran secara berkala.</h3>
-    </div>
-    <div class="col-5">
-        <div class="p-3 bg-info">
-    </div>
-    <!-- Ilustrasi -->
-    <img src="/images/apar2.jpg" width="445">
-    <br>
-    <div class="p-3 bg-info">
-    </div>
-    </div>
-    </div>
+   
   </div>
+</div>
+</div>
+
+
 
 <?= $this->endSection() ?>
-
