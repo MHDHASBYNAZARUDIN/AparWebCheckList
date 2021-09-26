@@ -32,15 +32,30 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bars"></i> DATA
+                            DATA
+                            <i class="fas fa-bars"></i>
                         </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         
-                        <a class="dropdown-item" href="<?=base_url()?>/masterapar">Data Apar</a>
+                        <a class="dropdown-item" href="<?=base_url()?>/masterapar">APAR</a>
                         <a class="dropdown-item" href="<?=base_url()?>/masterjenisapar">Data Jenis Apar</a>
                         
                 </div>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            USER
+                            <i class="fas fa-bars"></i>
+                        </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        
+                        <a class="dropdown-item" href="<?=base_url()?>/masterusers">Data User</a>
+                        <a class="dropdown-item" href="<?=base_url()?>/users/add">Data Jenis</a>
+                        
+                </div>
+                    </li>
+
                 </ul>
     
                 <ul class="navbar-nav my-2 my-lg-0">
@@ -52,11 +67,8 @@
                     </svg>
                         </a>
                     </li>
-                    <!--
-                <li class="nav-item <?= ($uri->getSegment(1) == 'profile')? 'active' : null?>">
-                        <a class="nav-link" href="<?=base_url()?>/profile">Profile</a>
-                    </li>
-                -->
+                    
+                
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url()?>/logout">Logout</a>
                     </li>
@@ -76,5 +88,6 @@
                 </a>
         </nav>
         <?= $this->renderSection('content') ?>
+        <script src="js/jquery.min.js"></script>
    </body>
 </html>        
