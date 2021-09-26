@@ -48,6 +48,8 @@ class Autoload extends AutoloadConfig
                 'MasterApar' => APPPATH . 'Modules/MasterApar',
                 'MasterJenisApar' => APPPATH . 'Modules/MasterJenisApar',
                 'TransaksiApar' => APPPATH . 'Modules/TransaksiApar',
+				'MasterUsers' => APPPATH . 'Modules/MasterUsers',
+				
 	];
 
 	/**
