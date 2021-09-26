@@ -43,8 +43,10 @@
                             $rows .= '<td>';
                             $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
                             $rows .= '<a href="'.base_url().'/masterjenisapar/edit/'.$v['id_jenis'].'" class="btn btn-success"><i class="fas fa-edit"></i></a>';
-                            $rows .= '<a href="'.base_url().'/masterjenisapar/printl/'.$v['id_jenis'].'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
-                            $rows .= '<a href="'.base_url().'/masterjenisapar/delete/'.$v['id_jenis'].'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>';
+                            //$rows .= '<a href="'.base_url().'/masterjenisapar/printl/'.$v['id_jenis'].'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
+                            $caption = ($v['status'] >= 1)?'deactive':'activate';
+                            $captionclass = ($v['status'] >= 1)?'btn-danger':'btn-warning';
+                            $rows .= '<a href="'.base_url().'/masterjenisapar/activation/'.$v['id_jenis'].'/'.$v['status'].'" class="btn '.$captionclass.'">'.$caption.'</a>';
                             $rows .= '</div>';
                             $rows .= '</td>';
                             $rows .='</tr>';

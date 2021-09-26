@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class MasterJenisAparModel extends Model 
 {
-    protected $table = 'MasterJenisApar';
+    protected $table = 'jenis';
     protected $allowedFields = [];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];

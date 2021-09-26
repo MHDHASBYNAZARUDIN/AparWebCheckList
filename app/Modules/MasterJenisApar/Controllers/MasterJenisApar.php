@@ -57,6 +57,12 @@ class MasterJenisApar extends Controller
             
         }
        //$records = $model;
+
+              /*  echo '<pre>';
+                echo '<br>';
+                print_r($records);
+                echo '</pre>';
+                die();*/
         $data['records'] = $records;
         $data['pager']   = $agent->pager;
         helper(['form']);        
@@ -81,15 +87,69 @@ class MasterJenisApar extends Controller
             }
         }else{
             //load edit first time   
+            $jenis = $this->MasterJenisAparLib->getjenisselect();
+            $data['selec'] = $jenis;    
             $data['mode']    = 'add';
             return view('MasterJenisApar\Views\addjenis', $data);
         }
     }
+        public function edit($idapar=''){
+        $data  = [];
+        helper(['form']);
+        $oroles = new Tajenis();
+        //mendeteksi request 
+        if ($this->request->getMethod() == 'post') {
+            $response = $this->MasterJenisAparLib->storedata();
+            if ($response->status != \Utils\Libraries\UtilsResponseLib::$SUCCESS) {
+                //failed requirement 
+                $record = $oroles->find($idapar);
+                $data = $response->error;
+                /*$jenis = $this->MasterJenisAparLib->getjenisselect();
+                $data['selec'] = $jenis;*/
+                $data['mode']    = 'edit/'.$idapar;
+                $data['rec']     = $record;
+                
+                
+                return view('MasterJenisApar\Views\addjenis', $data);
 
-    public function delete($id){
-        $oroles = new TaJenis();
-        $oroles->delete($id); 
-        return redirect()->to(base_url() . '/masterjenisapar');
+            } else {
+                //on success 
+                return redirect()->to(base_url() . '/masterjenisapar');
+            }
+        }else{
+            //load edit first time 
+            $record = $oroles->find($idapar);
+            /*$jenis = $this->MasterJenisAparLib->getjenisselect();
+            $data['selec'] = $jenis;*/
+            //
+            $data['mode']   = 'edit/'.$idapar;
+            $data['rec']    = $record;
+            
+           /**  echo '<pre>';
+                *echo '<br>';
+                *print_r($record);
+                *echo '</pre>';
+               * die(); */
+            return view('MasterJenisApar\Views\addjenis', $data);
+        }
     }
+    public function activation($id,$sts){
+        // die($id.'---'.$sts);
+         if($id){
+             if($sts==1){
+                 $msts = 0;  
+             }else{
+                 $msts = 1;
+             }
+             $data = ['status' => $msts];    
+             /*echo '<pre>';
+             print_r($data);
+             echo '</pre>';
+             die('SKIP');*/
+             $JenisModel     = new Tajenis();
+             $JenisModel->update($id,$data);
+         }
+         return redirect()->to(base_url() . '/masterjenisapar');
+     }
 
 }
