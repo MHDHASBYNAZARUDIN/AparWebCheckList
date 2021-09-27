@@ -8,5 +8,4 @@ $routes->add('masterjenisapar', 'MasterJenisApar\Controllers\MasterJenisApar::se
 $routes->add('masterjenisapar/add', 'MasterJenisApar\Controllers\MasterJenisApar::add');
 $routes->add('masterjenisapar/delete/(:num)', 'MasterJenisApar\Controllers\MasterJenisApar::delete/$1');
 $routes->add('masterjenisapar/edit/(:num)', 'MasterJenisApar\Controllers\MasterJenisApar::edit/$1');
-//$routes->add('masterjenisapar/printl/(:num)', 'MasterjenisApar\Controllers\MasterJenisApar::printl/$1');
 $routes->add('masterjenisapar/activation/(:num)/(:num)', 'MasterJenisApar\Controllers\MasterJenisApar::activation/$1/$2');

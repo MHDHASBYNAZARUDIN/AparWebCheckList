@@ -1,27 +1,31 @@
 <?php 
-namespace MasterJenisApar\Libraries;
-use MasterApar\Models\TaJenis;
+namespace MasterUsers\Libraries;
+use MasterUsers\Models\MasterUsersModel;
+use Users\Models\UsersModel;
+//use MasterApar\Models\TaJenis;
 use Utils\Libraries\UtilsResponseLib;
 use CodeIgniter\HTTP\Response;
 use app\Libraries\Ciqrcode;
 use stdClass;
 
-class MasterJenisAparLib {
+class MasterUsersLib {
     use UtilsResponseLib;
     public function __construct() {
         $config = config(App::class);
         $this->response = new Response($config);
-        include APPPATH . '/Libraries/Ciqrcode.php';
     }
-    
-    /**
-     *Saving data request (Blitar, 03 of August 2021)
-     */
+
     public function storedata(){
         #---copy code start----
         $request = \Config\Services::request();
         $rules = [
-            'jenis' => 'required'
+            'firstname' => 'required|min_length[3]|max_length[20]',
+            'lastname' => 'required|min_length[3]|max_length[20]',
+            'email' => 'required|min_length[6]|max_length[50]|',
+            'password' => 'required|min_length[8]|max_length[255]',
+            'password_confirm' => 'matches[password]',
+            'email' => 'required',
+            
         ];
         $errors = [];
         //Sesuaikan lagi dibawah 
@@ -36,17 +40,22 @@ class MasterJenisAparLib {
             $data['validation'] = $validation;
             return $this->setResponse(UtilsResponseLib::$NOTALLOWED, $data);
         } else {
-            $scheduleModel = new Tajenis();
+            $scheduleModel = new UsersModel();
             $newData = [
-                'jenis'    => $request->getVar('jenis')
+                'firstname' => $request->getVar('firstname'),
+                'lastname' => $request->getVar('lastname'),
+                'email' => $request->getVar('email'),
+                'password' => $request->getVar('password'),
+                'role' => $request->getVar('role'),
+                
             ];
-            $idcheck = $request->getVar('id_jenis');
+            $idcheck = $request->getVar('id');
             if($idcheck){
-                $newData['id_jenis'] = $request->getVar('id_jenis');
+                $newData['id'] = $request->getVar('id');
             }
             $data = $scheduleModel->save($newData);
-            if($request->getVar('id_jenis')){
-                $eid = $request->getVar('id_jenis');    
+            if($request->getVar('id')){
+                $eid = $request->getVar('id');    
             }else{
                 $eid = $scheduleModel->insertID;
             }
@@ -55,9 +64,10 @@ class MasterJenisAparLib {
             print_r($data);
             echo '</pre>';*/
             #die('SKIP');   
+            //$this->savePhoto($eid);
 
             if ($data) {
-                session()->setFlashdata('success', lang('MasterJenisApar.register.created'));
+                session()->setFlashdata('success', lang('MasterUsers.register.created'));
                 return $this->setResponse(UtilsResponseLib::$SUCCESS, $data);
             } else {
                 $data['errormessaje'] = 'Undefined';
@@ -66,5 +76,11 @@ class MasterJenisAparLib {
         }
         #----------------------
 
-    }    
+    }
+
+    public function getroleselect(){
+        $roleModel = new MasterUsersModel();
+        return $roleModel->select('id_role, role')->get()->getResult();
+    }
+
 }

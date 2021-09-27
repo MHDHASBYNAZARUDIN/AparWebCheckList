@@ -13,7 +13,7 @@
             <form method="post" action="">
                 <div class="form-row align-items-center float-sm-right">
                     <a href="<?=base_url().'/masterapar';?>" class="btn btn-warning b-align-link">Reset</a>&nbsp;
-                    <a href="<?=base_url().'/masterapar/add';?>" class="btn btn-danger b-align-link"><i class="fas fa-plus-circle"></i></a>
+                    <!--<a href="<?//=base_url().'/transaksi/add';?>" class="btn btn-danger b-align-link"><i class="fas fa-plus-circle"></i></a>-->
                     
                     <div class="col-auto">
                         <label class="sr-only" for="inlineFormInput">Lokasi</label>
@@ -35,7 +35,6 @@
                     <th scope="col">KONDISI NOZZLE</th>
                     <th scope="col">KONDISI TEKANAN</th>
                     <th scope="col">KONDISI SELANG</th>
-                    <th scope="col">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,13 +51,6 @@
                             $rows .= '<td>'.$v['kondisinozzle'].'</td>';
                             $rows .= '<td>'.$v['kondisitekanan'].'</td>';
                             $rows .= '<td>'.$v['kondisiselang'].'</td>';
-                            $rows .= '<td>';
-                            $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
-                            #$rows .= '<a href="'.base_url().'/transaksiapar/add'.'" class="btn btn-warning"><i class="fas fa-tasks"></i></a>';
-                            #$rows .= '<a href="'.base_url().'/masterapar/edit/'.$v['id_apar'].'" class="btn btn-success"><i class="fas fa-edit"></i></a>';
-                            #$rows .= '<a href="'.base_url().'/masterapar/printl/'.$v['id_apar'].'" class="btn btn-primary"><i class="fas fa-print"></i></a>';
-                            $rows .= '</div>';
-                            $rows .= '</td>';
                             $rows .='</tr>';
                         }
                         echo $rows;

@@ -30,32 +30,27 @@ class MasterUsers extends Controller
         $users = new UsersModel();
         if ($this->request->getMethod() == 'post') {
             $firstname       = $this->request->getVar('firstname');
-            //$records        = $users->where('firstname LIKE \'%'.$firstname.'%\'')->asArray()->findAll();
             $records        = $users->select('users.id,users.firstname,users.lastname,
-            users.email,users.password,users.created_at,users.updated_at,users.role,users.status
-            ,Role.role')
+            users.email,users.password,users.created_at,users.updated_at,users.role,users.status,Role.role')
                             ->where('firstname LIKE \'%'.$firstname.'%\'')
                             ->join('Role','Role.id_role=users.role','left') 
                             ->asArray()->findAll();
-
 
         }else{
             $firstname       = $this->request->getVar('firstname');
-            #$records        = $users->where('firstname LIKE \'%'.$firstname.'%\'')->asArray()->findAll();
             $records        = $users->select('users.id,users.firstname,users.lastname,
-            users.email,users.password,users.created_at,users.updated_at,users.role,Role.role')
+            users.email,users.password,users.created_at,users.updated_at,users.role,users.status,Role.role')
                             ->where('firstname LIKE \'%'.$firstname.'%\'')
                             ->join('Role','Role.id_role=users.role','left') 
                             ->asArray()->findAll();
-        
         }
         
         $data['rec'] = $records;
-            echo '<pre>';
-            echo '<br>';
-            print_r($records);
-            echo '</pre>';
-            die();
+            /*echo '<pre>';
+               echo '<br>';
+               print_r($records);
+               echo '</pre>';
+               die();*/
 
         helper(['form']);
         
@@ -97,10 +92,10 @@ class MasterUsers extends Controller
             $response = $this->MasterUsersLib->storedata();
             if ($response->status != \Utils\Libraries\UtilsResponseLib::$SUCCESS) {
                 //failed requirement 
-                $record = $oroles ->asArray()->find($id);
+                $record = $oroles->asArray()->find($id);
                 $data = $response->error;
-                $role = $this->MasterUsersLib->getroleselect();
-                $data['selec'] = $role; 
+                $jenis = $this->MasterUsersLib->getroleselect();
+                $data['selec'] = $jenis;
                 $data['mode']    = 'edit/'.$id;
                 $data['rec']     = $record;
                 
@@ -114,21 +109,17 @@ class MasterUsers extends Controller
         }else{
             //load edit first time 
             $record = $oroles->asArray()->find($id);
-            $role = $this->MasterUsersLib->getroleselect();
-            $data['selec'] = $role; 
+            $jenis = $this->MasterUsersLib->getroleselect();
+            $data['selec'] = $jenis;
+            //
             $data['mode']   = 'edit/'.$id;
             $data['rec']    = $record;
-
-            /*echo '<pre>';
-            echo '<br>';
-            print_r($record);
-            echo '</pre>';
-            die();*/
 
             return view('MasterUsers\Views\AddFormUsers', $data);
         }
     }
 
+    
     public function activation($id,$sts){
         // die($id.'---'.$sts);
          if($id){

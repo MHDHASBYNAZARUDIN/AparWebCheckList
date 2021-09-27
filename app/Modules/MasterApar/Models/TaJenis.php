@@ -7,7 +7,7 @@ class TaJenis extends Model
     protected $table = 'Tjenis';
     protected $primaryKey = 'id_jenis';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['jenis'];
+    protected $allowedFields = ['jenis','status'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
     

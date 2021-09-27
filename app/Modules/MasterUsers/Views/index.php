@@ -56,8 +56,8 @@
                             $rows .= '<td>'.$v['role'].'</td>';
                             $rows .= '<td>';
                             $rows .= '<div class="btn-group" role="group" aria-label="User Action">';
-                            $caption = ($v['status'] >= 1)?'deactive':'activate';
-                            $captionclass = ($v['status'] >= 1)?'btn-danger':'btn-warning';
+                            $caption = ($v['status'] >= 1)?'NON AKTIF':'AKTIF';
+                            $captionclass = ($v['status'] >= 1)?'btn-danger':'btn-primary';
                             $rows .= '<a href="'.base_url().'/masterusers/activation/'.$v['id'].'/'.$v['status'].'" class="btn '.$captionclass.'">'.$caption.'</a>';
                             $rows .= '</div>';
                             $rows .= '</td>';

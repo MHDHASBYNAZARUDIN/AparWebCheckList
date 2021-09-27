@@ -13,7 +13,7 @@ class UsersModel extends Model {
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'updated_at','foto'];
+    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'updated_at','status','role'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 

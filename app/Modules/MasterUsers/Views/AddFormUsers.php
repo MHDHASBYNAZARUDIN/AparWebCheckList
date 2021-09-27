@@ -92,7 +92,7 @@
                     
                     <div class="row">
                         <div class="col-12 col-sm-12 text-right">
-                        <input type="hidden" name="id_apar" id="id_apar" value="<?=isset($rec['id'])?$rec['id']:''; ?>">
+                        <input type="hidden" name="id" id="id" value="<?=isset($rec['id'])?$rec['id']:''; ?>">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </div>

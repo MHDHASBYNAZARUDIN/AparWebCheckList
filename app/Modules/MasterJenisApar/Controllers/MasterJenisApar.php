@@ -87,8 +87,6 @@ class MasterJenisApar extends Controller
             }
         }else{
             //load edit first time   
-            $jenis = $this->MasterJenisAparLib->getjenisselect();
-            $data['selec'] = $jenis;    
             $data['mode']    = 'add';
             return view('MasterJenisApar\Views\addjenis', $data);
         }
@@ -104,8 +102,6 @@ class MasterJenisApar extends Controller
                 //failed requirement 
                 $record = $oroles->find($idapar);
                 $data = $response->error;
-                /*$jenis = $this->MasterJenisAparLib->getjenisselect();
-                $data['selec'] = $jenis;*/
                 $data['mode']    = 'edit/'.$idapar;
                 $data['rec']     = $record;
                 
@@ -119,9 +115,6 @@ class MasterJenisApar extends Controller
         }else{
             //load edit first time 
             $record = $oroles->find($idapar);
-            /*$jenis = $this->MasterJenisAparLib->getjenisselect();
-            $data['selec'] = $jenis;*/
-            //
             $data['mode']   = 'edit/'.$idapar;
             $data['rec']    = $record;
             
