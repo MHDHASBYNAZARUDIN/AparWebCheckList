@@ -4,12 +4,12 @@
 <style>
 
   .jumbotron-fluid{
-    background-image: url("http://localhost:8080/images/aparwall.jpg");
-    height : 100%;
+    background-image: url("images/aparwall.jpg");
+    min-height : 720px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    margin-top: 30px;
+    margin: 0;
  }
 </style>
 
@@ -22,10 +22,11 @@
         <strong><h1 class="text-primary font-weight-bolder display-4">Selamat Datang di <br> Web Aplikasi APAR</h1></strong>
         <div class="mt-3 text-white">
         Aplikasi berbasis Web ini bertujuan <br> untuk mempermudan petugas dalam pengecekan <br> alat pemadam kebakaran secara berkala.
-        </div>  
-  <ul class="nav">
+        </div>  <br>
+      
+<ul class="nav">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-search"></i></a>
+    <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-search"></i></a> <br>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#"><i class="fas fa-database"></i></a>
@@ -36,7 +37,7 @@
   <li class="nav-item">
     <a class="nav-link"><i class="fas fa-tasks"></i></a>
   </li>
-</ul>
+</ul>       
 
       </div>      
     </div>
@@ -48,6 +49,3 @@
 
 
 <?= $this->endSection() ?>
-
-
-
