@@ -11,6 +11,9 @@
         <script type="text/javascript" src="/assets/js/jquery/datepicker.js"></script>
         <link rel="stylesheet" href="/releases/v5.15.4/css/all.css">
         <script src="/releases/v5.15.4/js/all.js" ></script>
+        <?php
+        $role = session()->get('role');
+        ?>
     </head>
     <body>
         <?php 
@@ -31,31 +34,31 @@
                     
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             DATA
-                            <i class="fas fa-bars"></i>
-                        </a>
+                            <i class="fas fa-database"></i>
+                            </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        
-                        <a class="dropdown-item" href="<?=base_url()?>/masterapar">APAR</a>
-                        <a class="dropdown-item" href="<?=base_url()?>/masterjenisapar">Data Jenis Apar</a>
-                        
+                        <a class="dropdown-item" href="<?=base_url()?>/masterapar"><i class="fas fa-database"></i> APAR</a>
+                        <?php if (session()->get('role')==2) : ?>
+                        <a class="dropdown-item" href="<?=base_url()?>/masterjenisapar"><i class="fas fa-database"></i> JENIS APAR</a>
+                        <?php endif; ?>
                 </div>
                     </li>
-
+        <?php if (session()->get('role')==2) : ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             USER
-                            <i class="fas fa-bars"></i>
+                            <i class="fas fa-database"></i>
                         </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         
                         <a class="dropdown-item" href="<?=base_url()?>/masterusers">Data User</a>
-                        <a class="dropdown-item" href="<?=base_url()?>/users/add">Data Jenis</a>
+                        <a class="dropdown-item" href="#">  Data Jenis</a>
                         
                 </div>
                     </li>
-
+        <?php endif; ?>
                 </ul>
     
                 <ul class="navbar-nav my-2 my-lg-0">

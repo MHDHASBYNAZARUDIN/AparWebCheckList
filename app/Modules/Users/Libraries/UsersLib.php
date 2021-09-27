@@ -149,6 +149,7 @@ class UsersLib {
             'firstname' => $user->firstname,
             'lastname' => $user->lastname,
             'email' => $user->email,
+            'role' => $user->role,
             'isLoggedIn' => true
         ];
         session()->set($data);

@@ -8,6 +8,7 @@ $routes->add('login', 'Users\Controllers\Users::login', ['filter' => 'noauth']);
 $routes->add('logout', 'Users\Controllers\Users::logout', ['filter' => 'auth']);
 $routes->add('register', 'Users\Controllers\Users::register', ['filter' => 'noauth']);
 $routes->add('profile', 'Users\Controllers\Users::profile', ['filter' => 'auth']);
+//$routes->add('login_status', 'Users\Controllers\Users::login_status');
 
 $routes->group('users', function($routes) {
     $routes->add('login', 'Users\Controllers\Users::login');
